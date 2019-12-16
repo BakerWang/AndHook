@@ -1,17 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.3"
+    compileSdkVersion 28
 
     defaultConfig {
         applicationId "andhook.test"
         minSdkVersion 14
-        targetSdkVersion 27
-        compileOptions {
-            sourceCompatibility JavaVersion.VERSION_1_8
-            targetCompatibility JavaVersion.VERSION_1_8
-        }
+        targetSdkVersion 28
+
         externalNativeBuild {
             ndkBuild {
                 abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
@@ -20,7 +16,8 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-project.pro'
         }
     }
     externalNativeBuild {
